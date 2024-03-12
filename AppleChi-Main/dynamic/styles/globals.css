@@ -435,6 +435,28 @@ footer .list-footer ul li i {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 }
-.Product-price .Seller{
+
+.Product-price .Seller {}
+
+.phone-category {}
+
+.side-mobile {
+  height: 100vh;
+  
+  border-radius: 15px;
+  border: 0.5px solid #CCC;
+}
+
+.content-list {
 
 }
+.content-item img{
+  width: max-content;
+  height: 150px;
+}
+.content-item .card-title{
+  font-size: .8rem;
+  color: #121111ee;
+  font-weight: 500;
+}
+.content-list .card-title{}
