@@ -1,10 +1,11 @@
 {
     "iphone": [
         {
+            "id" : 18 ,
             "title": "iPhone 15 Pro",
             "year": 2023,
-            "price": 1199,
-            "type": "NEW",
+            "price": "61,000,000",
+            "type": "نات اکتیو",
             "Size": "6.1",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -12,10 +13,11 @@
             "Rate": 4
         },
         {
+            "id" : 19 ,
             "title": "iPhone 15 Pro MAX",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "27,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -23,10 +25,11 @@
             "Rate": 5
         },
         {
+            "id" : 20 ,
             "title": "iPhone 15 ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "77,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -34,10 +37,11 @@
             "Rate": 5
         },
         {
+            "id" : 21 ,
             "title": "iPhone 15 Pro ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "57,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -45,10 +49,11 @@
             "Rate": 3
         },
         {
+            "id" : 22 ,
             "title": "iPhone 14 ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "37,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -56,10 +61,11 @@
             "Rate": 3
         },
         {
+            "id" : 23 ,
             "title": "iPhone 13 Pro ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "35,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -67,10 +73,11 @@
             "Rate": 4
         },
         {
+            "id" : 24 ,
             "title": "iPhone 13 Pro Max ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "44,000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",
@@ -78,10 +85,11 @@
             "Rate": 4
         },
         {
+            "id" : 25 ,
             "title": "iPhone 13 ",
             "year": 2023,
-            "price": 1449,
-            "type": "NEW",
+            "price": "35,0000,000",
+            "type": "نات اکتیو",
             "Size": "6.7",
             "Camera": "48MB",
             "Usb-Type": "C",

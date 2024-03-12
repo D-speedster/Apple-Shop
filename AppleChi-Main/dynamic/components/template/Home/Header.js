@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 
@@ -8,14 +9,17 @@ export default function Header() {
         <header>
             <nav className="navbar  navbar-expand-lg bg-white navbar-light ">
                 <div className="container">
-                    <a className="navbar-brand" href="#">
+
+                    <Link className='navbar-brand' href='/'>
                         <img
-                            src="img/Capture-removebg-preview.png"
+                            src="/img/Capture-removebg-preview.png"
                             width={120}
                             className="h-8"
                             alt="..."
                         />
-                    </a>
+                    </Link>
+
+
                     <div className="mr-5 d-lg-block d-md-block d-none ">
                         <input
                             type="search "
@@ -48,7 +52,7 @@ export default function Header() {
                         <div className="navbar-nav pe-3">
                             <button
                                 href="#"
-                                className="btn   w-full w-lg-auto order-button"
+                                className="btn w-full w-lg-auto order-button"
                                 style={{ padding: 14 }}
                             >
                                 ثبت آگهی
@@ -63,25 +67,18 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav navbar-second" style={{ color: 'red', marginRight: '-27px' }}>
                             <li className="nav-item">
-                                <a href="" className="nav-link">
-                                    گوشی موبایل
-                                </a>
+                                <Link className="nav-link" href='/categories/phone'>  گوشی موبایل</Link>
                             </li>
                             <li className="nav-item">
-                                <a href="" className="nav-link pe-5">
-                                    ساعت هوشمند
-                                </a>
+                                <Link href='/' className="nav-link pe-5"> ساعت هوشمند</Link>
                             </li>
                             <li className="nav-item">
-                                <a href="" className="nav-link pe-5">
-                                    مک بوک
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="" className="nav-link pe-5">
 
-                                    ایرتگ
-                                </a>
+                                <Link href='/' className="nav-link pe-5">   مک بوک</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link href='/' className="nav-link pe-5">   ایرتگ</Link>
+
                             </li>
                             <li className="nav-item">
                                 <a href="" className="nav-link pe-5">
