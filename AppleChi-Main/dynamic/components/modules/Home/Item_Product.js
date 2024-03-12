@@ -7,13 +7,14 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default function Item_Product() {
+export default function Item_Product({ bg }) {
+
 
     return (
 
         <div>
 
-            <section className='Category-Type'>
+            <section className='Category-Type' style={{ backgroundColor: `${bg}` }}>
                 <div className="container ">
                     <div className="Header-Title">
                         <h3>ایرپاد</h3>

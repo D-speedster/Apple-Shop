@@ -1,9 +1,10 @@
-import Header from "@/components/template/Home/Header";
-import Footer from "@/components/template/Home/Footer";
-import Blog from "@/components/template/Home/Blog";
+import Header from "@/components/template/Home/Header"
+import Footer from "@/components/template/Home/Footer"
+import Blog from "@/components/template/Home/Blog"
 import Item_Product from "@/components/modules/Home/Item_Product"
-import Ads from "@/components/modules/Home/Ads";
-
+import Ads from "@/components/modules/Home/Ads"
+import HeaderSlider from "@/components/template/Home/HeaderSlider"
+import Category_Store from "@/components/template/Home/Category_Store"
 
 
 export default function Home() {
@@ -12,9 +13,12 @@ export default function Home() {
     <>
       <article>
         <Header></Header>
-        <Item_Product></Item_Product>
+        <HeaderSlider />
+        <br />
+        <Category_Store></Category_Store>
+        <Item_Product bg={'#eee'}></Item_Product>
         <Ads></Ads>
-        <Item_Product></Item_Product>
+        <Item_Product ></Item_Product>
         <Item_Product></Item_Product>
         <Blog></Blog>
       </article>
@@ -22,7 +26,7 @@ export default function Home() {
       <br /><br /><br /><br /><br /><br /><br />
       <Footer></Footer>
     </>
-  );
+  )
 }
 export async function getStaticProps() {
   let posts = ''

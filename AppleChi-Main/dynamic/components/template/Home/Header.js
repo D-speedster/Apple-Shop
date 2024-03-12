@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+
 
 export default function Header() {
+
     return (
         <header>
-            <nav className="navbar  navbar-expand-lg bg-white  navbar-light  px-0 py-3  ">
-                <div className="container-xl">
+            <nav className="navbar  navbar-expand-lg bg-white navbar-light ">
+                <div className="container">
                     <a className="navbar-brand" href="#">
                         <img
                             src="img/Capture-removebg-preview.png"
@@ -17,7 +20,7 @@ export default function Header() {
                         <input
                             type="search "
                             placeholder="جستجو در آگهی ها "
-                            style={{ width: 600, marginRight: 70 }}
+                            style={{ width: 600, marginRight: 50, height: '50px' }}
                         />
                     </div>
                     <button
@@ -54,38 +57,65 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-xl">
+
+            <nav className="navbar navbar-expand-lg bg-white " >
+                <div className='container'>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav">
+                        <ul className="navbar-nav navbar-second" style={{ color: 'red', marginRight: '-27px' }}>
                             <li className="nav-item">
                                 <a href="" className="nav-link">
-                                    <img src="img/menu_16.png" alt="" />
-                                    دستهه بندی
+                                    گوشی موبایل
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a href="" className="nav-link">
-                                    <img src="img/fire_.png" alt="" />
-                                    تخفیفات روز
-                                </a>{" "}
-                            </li>
-                            <li className="nav-item">
-                                <a href="" className="nav-link">
-                                    <img src="img/top-arrow_.png" alt="" />
-                                    برترین ها
+                                <a href="" className="nav-link pe-5">
+                                    ساعت هوشمند
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a href="" className="nav-link">
-                                    <img src="img/call_.png" alt="" />
-                                    ارتباط باما
+                                <a href="" className="nav-link pe-5">
+                                    مک بوک
                                 </a>
                             </li>
+                            <li className="nav-item">
+                                <a href="" className="nav-link pe-5">
+
+                                    ایرتگ
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="" className="nav-link pe-5">
+
+                                    هدفون و هندزفری
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="" className="nav-link pe-5">
+
+                                    آی مک
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="" className="nav-link pe-5">
+
+                                    هوم پاد
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a style={{ color: 'red' }} href="" className="nav-link pe-5">
+
+                                    Vision Pro
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
             </nav>
+            <hr />
+
+
+
         </header>
 
     )
