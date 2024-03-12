@@ -101,9 +101,7 @@ export default function Footer() {
             <div className="container">
                 <div className="row align-content-end justify-content-between">
                     <div className="col">
-                        <button className="btn btn-outline-secondary rounded-3">
-                            ALL SYSTEM OPRATION
-                        </button>
+                       <strong style={{color:'#FFF'}}> ⚡️ طراحی شده توسط speedster ⚡️</strong>
                     </div>
                     <div className="col"></div>
                     <div className="col">
