@@ -18,9 +18,9 @@ export default function chartBar() {
             ],
             datasets: [
                 {
-                    label: "My First dataset",
-                    backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
+                    label: "عملکرد فروش",
+                    backgroundColor: "blue",
+                    borderColor: "black",
                     borderWidth: 1,
                     //stack: 1,
                     hoverBackgroundColor: "rgba(255,99,132,0.4)",
@@ -29,12 +29,12 @@ export default function chartBar() {
                 },
 
                 {
-                    label: "My second dataset",
-                    backgroundColor: "rgba(155,231,91,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
+                    label: "عملکرد فروش",
+                    backgroundColor: "green",
+                    borderColor: "black",
                     borderWidth: 1,
                     //stack: 1,
-                    hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                    hoverBackgroundColor: "rgba(205,9,12,0.4)",
                     hoverBorderColor: "rgba(255,99,132,1)",
                     data: [45, 79, 50, 41, 16, 85, 20]
                 }
@@ -43,27 +43,25 @@ export default function chartBar() {
     }
 
     const options = {
-        responsive: true,
         legend: {
-            display: false
+            labels: {
+                padding: 10,
+            },
         },
-        type: "bar"
-        //   scales: {
-        //     xAxes: [{
-        //         stacked: true
-        //     }],
-        //     yAxes: [{
-        //         stacked: true
-        //     }]
-        // }
+        labels: {
+            position: "outside",
+        },
+        labelOffset: 10,
+        labelPadding: 5,
+        maintainAspectRatio: false
     };
     return (
         <div>
             <Bar
                 data={data}
-                
-               
                 options={options}
+                height='300px'
+                width='600px'
             />
         </div>
     )

@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #191c24;
+  --primary-color: #181c2a;
   --Secondary-color: #000000;
   --primary-Text: #FFFf;
   --Secondary-Text: #6a7291;
@@ -22,6 +22,7 @@ body {
   height: 100vh;
   color: var(--primary-Text) !important;
   position: relative;
+
   direction: rtl;
 }
 
@@ -44,7 +45,7 @@ body {
 
 .main-content .SideBar .Menu-SideBar {
   /* background-color: red; */
- 
+
 }
 
 .main-content .SideBar .Menu-SideBar .menu-item {
@@ -113,18 +114,19 @@ body {
   background-color: var(--primary-color);
   display: flex;
   align-items: center;
-  margin-right: -13px;
+  margin-right: -86px;
 
-  
+
 }
 
 .content .header-admin .search input {
   background-color: var(--primary-color);
   border: 0.5px solid #3e3e3e;
   border-radius: var(--bodrder-radius);
- 
+
 }
-input::placeholder{
+
+input::placeholder {
   color: var(--Secondary-Text) !important;
 }
 
@@ -174,9 +176,9 @@ input::placeholder{
 
 @media only screen and (max-width: 800px) {
   .content .static-boxes .static-item {
-      width: 80%;
-      margin-top: 15px;
-      height: max-content;
+    width: 80%;
+    margin-top: 15px;
+    height: max-content;
 
   }
 }
@@ -460,15 +462,147 @@ tr {
 @media only screen and (max-width: 800px) {
 
   .Ticket-Status-ITEM {
-      margin: 15px auto !important;
-      width: 80% !important;
+    margin: 15px auto !important;
+    width: 80% !important;
   }
 }
-.Box-Information{
-  height: 800px;
+
+.Box-Information {
+  height: 820px;
   width: 100%;
   background-color: var(--primary-color);
   margin-top: 25px;
   border-radius: var(--bodrder-radius);
-  
+  padding-bottom: 25px;
+
+}
+
+.info-product {
+  height: 635px;
+  overflow-y: auto;
+  overflow-x: auto;
+
+
+}
+
+.info-product label {
+  margin-right: 4px;
+}
+
+.info-product input {
+  background-color: #2c2d3c;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border: 1px solid #3c3e4d;
+  border-radius: 14px;
+  width: 100%;
+  height: 45px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  color: #ffff;
+  padding-right: 15px;
+}
+
+.info-product textarea {
+  background-color: #2c2d3c;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border: 1px solid #3c3e4d;
+  border-radius: 14px;
+  width: 100%;
+  resize: none;
+  /* cursor: pointer; */
+}
+
+.info-product input:focus {
+  outline: none !important;
+  border-right: 3px solid green !important;
+  border-bottom: 1.5px solid green !important;
+  ;
+  color: #ffff;
+  /* text-align: center; */
+  padding-right: 15px;
+
+
+}
+
+.preview-product {
+  height: 635px;
+  overflow-y: auto;
+  overflow-x: auto;
+
+}
+
+.box-add-image {
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #2c2d3c;
+  margin-right: 18px;
+  position: relative;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.plus-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+}
+
+.TitlePage {
+  background-color: var(--primary-color);
+  height: 60px;
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 10px;
+  padding-right: 25px;
+  justify-content: center;
+  align-content: center;
+
+}
+
+.box-comment {
+  background-color: var(--primary-color);
+  border-radius: var(--bodrder-radius);
+  list-style-type: none;
+  height: max-content;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  margin-bottom: 35px;
+  color: #FFFFFf;
+}
+
+.box-comment .nav-link {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: bold;
+  height:30px
+}
+
+.box-comment .nav-link:hover {
+  color: red !important;
+}
+.box-comment .nav-link {
+  border-left: 0.5px solid #b7b9b7;
+}
+
+.comment-item {
+  border: 1px solid #3f3d3d;
+  margin-top: 25px;
+  background-color: #181c2a;
+  height: max-content;
+  justify-content: space-between;
+  align-content: center;
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
 }

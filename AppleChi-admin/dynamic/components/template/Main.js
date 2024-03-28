@@ -88,6 +88,7 @@ export default function Main() {
                 </div>
             </div>
             <br />
+
             <section>
                 <div className="row gx-4 justify-content-between ">
                     <div className="col-lg-3">
@@ -96,9 +97,9 @@ export default function Main() {
                                 <i className="fa-solid fa-chart-simple" style={{ color: '#00d25b', fontSize: '26px', marginLeft: '10px' }} />
                                 <h5 className="card-title mb-0">وضعیت فروش</h5>
                             </div>
-                            <div className="d-flex justify-content-center text-ceneter align-items-center mt-0">
+                            <div className="pt-2">
                                 <Chart />
-                         
+
                             </div>
                             <div className="text-center mt-4">
                                 <span style={{ color: 'var(--Secondary-Text)' }}>مشاهده وضعیت فروش </span>
@@ -227,19 +228,19 @@ export default function Main() {
                                 <i className="fa-solid fa-chart-simple" style={{ color: '#00d25b', fontSize: '26px', marginLeft: '10px' }} />
                                 <span style={{ fontSize: '20px' }}>عملکرد ماهانه <span>
                                 </span></span></div>
-                                <ChartLine></ChartLine>
+                            <ChartLine></ChartLine>
 
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="Left-Chart p-4">
-                            <div className="d-flex ">
+                        <div className="Left-Chart pt-3">
+                            <div className="container">
                                 <i className="fa-solid fa-chart-simple" style={{ color: '#00d25b', fontSize: '26px', marginLeft: '10px' }} />
                                 <span style={{ fontSize: '20px' }}>عملکرد سالانه <span>
                                 </span></span>
-                                <ChartBar/>
+                                <ChartBar />
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

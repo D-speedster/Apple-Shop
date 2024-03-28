@@ -1,12 +1,18 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 export default function SideBar() {
+    let router = useRouter('');
+    let loggedFunction = () => {
+        alert("You Logged out")
+        router.push('https://google.com')
+    }
     return (
         <div className="col-lg-2 SideBar d-md-block d-lg-block d-none">
             <div className="d-flex">
                 <i className="fa-brands fa-apple mt-3 me-2" style={{ fontSize: '29px', color: '#77dd77' }} />
-                <h5 className="pt-3 pb-3 text-end">مدیریت فروشگاه اپل</h5>
+                <h5 className="pt-3 pe-2 text-end">مدیریت فروشگاه اپل</h5>
             </div>
             <hr />
             <div className="profile">
@@ -64,7 +70,7 @@ export default function SideBar() {
                         </div>
                     </div>
                     {/* Dropdown Need  mac - watch - iphone */}
-                    <Link href='products' style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
+                    <Link href='/Products' style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
                         <li className="menu-item" id="accordion">
                             <div className="box-circle" id="headingOne">
                                 <i style={{ color: '#ff8800' }} className="fa-brands fa-product-hunt" />
@@ -74,7 +80,7 @@ export default function SideBar() {
                     </Link>
 
                     {/* Dropdown Need  Delete & Edit */}
-                    <Link href='comments' style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
+                    <Link href='/Comments' style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
                         <li className="menu-item">
                             <div className="box-circle">
                                 <i style={{ color: '#f2322!important' }} className="fa-regular fa-comments" />
@@ -82,16 +88,7 @@ export default function SideBar() {
                             <span> کامنت ها</span>
                         </li>
                     </Link>
-
-                    <Link href={`ticket`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
-                        <li className="menu-item">
-                            <div className="box-circle">
-                                <i style={{ color: '#0090e7!important' }} className="fa-regular fa-life-ring" />
-                            </div>
-                            <span> تیکت ها</span>
-                        </li>
-                    </Link>
-                    <Link href={`users`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
+                    <Link href={`/Users`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
                         <li className="menu-item">
                             <div className="box-circle">
                                 <i style={{ color: '#8f5fe8!important' }} className="fa-solid fa-users" />
@@ -99,16 +96,30 @@ export default function SideBar() {
                             <span> یوزر ها</span>
                         </li>
                     </Link>
-                    <Link href={`settings`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
+
+                    <Link href={`/ticket`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
                         <li className="menu-item">
                             <div className="box-circle">
-                                <i style={{ color: 'aquamarine!important' }} className="fa-solid fa-gear" />
+                                <i style={{ color: '#0090e7!important' }} className="fa-regular fa-life-ring" />
                             </div>
-                            <span> تنظیمات</span>
+                            <span> تیکت ها</span>
                         </li>
                     </Link>
+                    <Link href={`/settings`} style={{ textDecoration: 'none !important', color: 'var(--Secondary-Text)' }}>
+                        <div id="accordion">
+                            <li className="menu-item" data-toggle="collapse" data-target="#collapsesecond" aria-expanded="true" aria-controls="collapsesecond">
+                                <div className="box-circle">
+                                    <i style={{ color: 'aquamarine!important' }} className="fa-solid fa-gear" />
+                                </div>
+                                <span> تنظیمات</span>
+                             
 
-                    <li className="menu-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            </li>
+                        </div>
+
+                    </Link>
+
+                    <li onClick={loggedFunction} className="menu-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div className="box-circle">
                             <i style={{ color: 'rgb(238, 6, 6)!important' }} className="fa-solid fa-arrow-right-from-bracket" />
                         </div>
