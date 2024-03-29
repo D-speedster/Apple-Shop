@@ -6,6 +6,7 @@ import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import dotenv from "dotenv";
 export default function index({ data }) {
+    const [image, setImage] = useState(null);
 
     let router = useRouter();
     let params = router.query.id
@@ -110,45 +111,62 @@ export default function index({ data }) {
             }
         }
     }, [params])
-    let Filevalidation = async (event) => {
-        function convertImageToBuffer() {
-            const file = event.target.files[0]
-            console.log(file)
-            const reader = new FileReader();
 
-            reader.onload = () => {
-                const buffer = Buffer.from(reader.result);
+    // let Filevalidation = async (event) => {
+    //     function convertImageToBuffer() {
+    //         const file = event.target.files[0]
+    //         console.log(file)
+    //         const reader = new FileReader();
 
-                console.log(buffer);
-            };
+    //         reader.onload = () => {
+    //             const buffer = Buffer.from(reader.result);
 
-            reader.readAsArrayBuffer(file);
-        }
-        convertImageToBuffer()
-        let { name, type, size, lastModifiedDate } = event.target.files[0]
-        let obj = {
+    //             console.log(buffer);
+    //         };
 
-            name,
-            type,
-            size,
-            lastModifiedDate,
-            code: 'binaryString'
-        }
+    //         reader.readAsArrayBuffer(file);
+    //     }
+    //     convertImageToBuffer(
 
-        fetch('../api/Upload',
-            {
-                method: "POST", // *GET, POST, PUT, DELETE, etc.
-                mode: "cors", // no-cors, *cors, same-origin
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, *same-origin, omit
-                headers: {
-                    "Content-Type": "application/json",
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify(obj)
-            }).then(res => res.json()).then(data => console.log(data))
-        console.log(event.target.files[0])
+    //     )
+    //     let { name, type, size, lastModifiedDate } = event.target.files[0]
+    //     let obj = {
+
+    //         name,
+    //         type,
+    //         size,
+    //         lastModifiedDate,
+    //         code: 'binaryString'
+    //     }
+
+    //     fetch('../api/Upload',
+    //         {
+    //             method: "POST", // *GET, POST, PUT, DELETE, etc.
+    //             mode: "cors", // no-cors, *cors, same-origin
+    //             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    //             credentials: "same-origin", // include, *same-origin, omit
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 // 'Content-Type': 'application/x-www-form-urlencoded',
+    //             },
+    //             body: JSON.stringify(obj)
+    //         }).then(res => res.json()).then(data => console.log(data))
+    //     console.log(event.target.files[0])
+    // }
+    async function handleImageUpload(event) {
+        event.preventDefault()
+
+        const formData = new FormData();
+        formData.append("username", "Chris");
+        formData.append("username", "Bob");
+        let file = formData.get("username"); // Returns "Chris"
+
+        console.log(file)
     }
+    function create() {
+        console.log("Use Server")
+    }
+
     return (
         <>
             <TitlePage title='افزودن محصول'></TitlePage>
@@ -284,6 +302,20 @@ export default function index({ data }) {
                                 <div className='preview-product'>
                                     <h4>پیشنمایش زنده</h4>
                                     <br />
+                                    <hr />
+                                    <form onSubmit={handleImageUpload}>
+                                        <label htmlFor="upload-image">upload image</label>
+                                        <input
+                                            id="upload-image"
+                                            name="upload-image"
+                                            type="file"
+                                            accept="image/*"
+                                            capture="camera"
+                                        />
+                                        <input type="submit" value="submit form" />
+                                    </form>
+
+                                    <hr />
                                     <div className='card text-center '>
 
                                         <div style={{
@@ -294,7 +326,7 @@ export default function index({ data }) {
                                             marginTop: '41px'
 
                                         }}>
-                                            <input className='form-control' onChange={Filevalidation} type='file' />
+
                                             <button type='file'>
                                                 <img src='/img/2323.png' style={{
 
@@ -336,6 +368,7 @@ export default function index({ data }) {
 }
 
 export async function getServerSideProps(contex) {
+    console.log(contex.params.id)
 
 
     return {
