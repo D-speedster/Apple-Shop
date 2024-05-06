@@ -12,11 +12,14 @@ export default function Header() {
 
                     <Link className='navbar-brand' href='/'>
                         <img
-                            src="/img/Capture-removebg-preview.png"
-                            width={120}
+                            src="/img/62dec0259f18b71442a15966_Apple-Logo.png"
+                            width={60}
+                            height={60}
                             className="h-8"
                             alt="..."
+                            style={{ marginRight: '20px' }}
                         />
+                        <span className='d-flex mt-1' style={{ color: '#999', textShadow: '1px 1px 2px #CCC' }}>Apple Shop</span>
                     </Link>
 
 
@@ -66,8 +69,8 @@ export default function Header() {
                 <div className='container'>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav navbar-second" style={{ color: 'red', marginRight: '-27px' }}>
-                            <li className="nav-item">
-                                <Link className="nav-link" href='/categories/phone'>  گوشی موبایل</Link>
+                            <li className="nav-item" style={{ fontSize: '22px !Important' }} >
+                                <Link className="nav-link" href='/categories/phone' >  گوشی موبایل</Link>
                             </li>
                             <li className="nav-item">
                                 <Link href='/' className="nav-link pe-5"> ساعت هوشمند</Link>
@@ -109,7 +112,7 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-            <hr />
+       
 
 
 
