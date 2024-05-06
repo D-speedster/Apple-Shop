@@ -302,6 +302,30 @@ footer .list-footer ul li i {
   font-size: 20px;
 }
 
+@media only screen and (max-width : 600px) {
+  .list-footer ul {
+    display: flex;
+    width: 111%;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+}
+
+@media only screen and (max-width : 600px) {
+  .list-footer ul li {
+    padding-left: 10px;
+    font-size: 13.4px;
+    max-width: max-content;
+
+
+  }
+
+}
+
+
+
 .swiper-button-next,
 .swiper-button-prev {
   background-color: #FFF;
@@ -442,21 +466,22 @@ footer .list-footer ul li i {
 
 .side-mobile {
   height: 100vh;
-  
+
   border-radius: 15px;
   border: 0.5px solid #CCC;
 }
 
-.content-list {
+.content-list {}
 
-}
-.content-item img{
+.content-item img {
   width: max-content;
   height: 150px;
 }
-.content-item .card-title{
+
+.content-item .card-title {
   font-size: .8rem;
   color: #121111ee;
   font-weight: 500;
 }
-.content-list .card-title{}
+
+.content-list .card-title {}
