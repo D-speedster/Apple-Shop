@@ -12,19 +12,19 @@ export default function Home() {
   return (
     <>
       <article>
-       
+
         <HeaderSlider />
         <br />
         <Category_Store></Category_Store>
-        <Item_Product bg={'#eee'}></Item_Product>
+        <Item_Product type="phone" bg={'#eee'}></Item_Product>
         <Ads></Ads>
-        <Item_Product ></Item_Product>
-        <Item_Product></Item_Product>
+        <Item_Product type="mac" ></Item_Product>
+        <Item_Product type="phone"></Item_Product>
         <Blog></Blog>
       </article>
 
       <br /><br /><br /><br /><br /><br /><br />
-     
+
     </>
   )
 }

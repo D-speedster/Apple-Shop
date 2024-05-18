@@ -400,12 +400,13 @@ footer .list-footer ul li i {
   outline: none;
   cursor: pointer;
   transition: 1s all;
+
 }
 
 .category-store .card-img {
   height: 50px !important;
   width: auto;
-
+ 
 }
 
 .navbar-second li a {
