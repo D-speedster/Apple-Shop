@@ -8,28 +8,35 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
 
-export default function Item_Product({ bg , type }) {
+export default function Item_Product({ bg, type }) {
     const [Listing, setListing] = useState([]);
     useEffect(() => {
-        
+
         const fetchData = async () => {
             const response = await fetch('http://localhost:3000/api/products');
             const json = await response.json();
-            let result = json.data.filter(item=>item.type == type)
+            let result = json.data.filter(item => item.type == type)
             setListing(result);
-     
+
         };
 
         fetchData();
 
     }, [])
-    Object.entries(Listing).map((item) => {
-        console.log(item['1'])
-    })
-    let result = Listing.filter(item => {
-       return  item.type == "phone"
-    })
-    console.log(result)
+    let Values = [
+        { en: 'phone', fa: 'گوشی' },
+        { en: 'mac', fa: 'مک بوک' },
+        { en: 'watch', fa: 'ساعت هوشمند' },
+        { en: 'airpod', fa: 'ایرپاد' }
+    ]
+    let translator = () => {
+        let res = Values.find((item => {
+            return item.en == type
+        }))
+        return res.fa
+
+    }
+    translator()
     return (
 
         <div>
@@ -37,7 +44,7 @@ export default function Item_Product({ bg , type }) {
             <section className='Category-Type' style={{ backgroundColor: `${bg}` }}>
                 <div className="container ">
                     <div className="Header-Title">
-                        <h3>{type}</h3>
+                        <h3>{translator()}</h3>
                         <span />
                     </div>
                     <>
@@ -63,7 +70,7 @@ export default function Item_Product({ bg , type }) {
                         >
                             {Object.entries(Listing).map(item => {
                                 return <SwiperSlide>
-                                    <Link href='/product/24' style={{ textDecoration: 'none' }}>
+                                    <Link href={`/product/${item['1']._id}`} style={{ textDecoration: 'none' }}>
                                         <div className="card" style={{ border: "none" }}>
                                             <div
                                                 className="card-header text-center"
@@ -74,7 +81,8 @@ export default function Item_Product({ bg , type }) {
                                                 <br />
                                                 <br />
                                                 <h6 className="card-title ">
-                                                   {item[1].type == "phone" ? 'گوشی موبایل' : 'لپ تاپ'}   {item['1'].title}
+
+                                                    {translator()} {item['1'].title}
                                                 </h6>
                                             </div>
                                             <div className="card-body">
@@ -91,9 +99,9 @@ export default function Item_Product({ bg , type }) {
                     </>
                 </div>
 
-            </section>
+            </section >
 
 
-        </div>
+        </div >
     )
 }

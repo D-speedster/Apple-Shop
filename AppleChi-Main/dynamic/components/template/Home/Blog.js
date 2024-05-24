@@ -33,10 +33,10 @@ export default function Blog() {
                                 <div className="d-flex justify-content-between">
                                     <div>
                                         <img
-                                            src="/img/photo_2020-09-10_21-33-39.jpg"
+                                            src="/img/a938df48cda441fba2f1459b37eed501.jpeg"
                                             style={{ height: 30, width: 30, borderRadius: "50%" }}
                                         />
-                                        حامد نجاری
+                                        امیر قاجاری
                                     </div>
                                     <div>
                                         <i className="fas fa-clock ps-1" />

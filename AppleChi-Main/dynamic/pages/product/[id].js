@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
@@ -9,11 +9,33 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import { useRouter } from 'next/router';
+
 export default function IDNumber() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    let [product, Setproduct] = useState('')
+    const router = useRouter('')
+    const { id } = router.query
+    useEffect(() => {
+
+        const fetchData = async () => {
+            const response = await fetch('http://localhost:3000/api/products');
+            const json = await response.json();
+            let result = json.data.filter(item => item._id == id)
+            Setproduct(result);
+          
+
+        };
+
+        fetchData();
+
+    }, [])
+    
+    
     return (
-        <div className='Product'>
-            <div className='Product-Info'>
+        <div className='Product mt-5'>
+            {Object.entries(product).map(item=>{
+                return <div className='Product-Info'>
                 <div className='container'>
                     <div className='row gx-4'>
                         <div className='col-lg-3'>
@@ -31,7 +53,7 @@ export default function IDNumber() {
                                     className="mySwiper2"
                                 >
                                     <SwiperSlide>
-                                        <img src="/img/1 (5).png" />
+                                        <img src={item[1].IMG} height={200} />
                                     </SwiperSlide>
                                     <SwiperSlide>
                                         <img src="/img/1 (6).png" />
@@ -72,36 +94,38 @@ export default function IDNumber() {
                             </div>
                         </div>
                         <div className='col-lg-6'>
-                            <div className='Product-Specifications'>
-                                <h6>
-                                    لپ تاپ 13.3 اینچی اپل مدل MacBook Air MGN63 2020-M1 8GB 256SSD
+                        <div className='Product-Specifications'>
+                                    <h6>
+                                        {/* لپ تاپ 13.3 اینچی اپل مدل MacBook Air MGN63 2020-M1 8GB 256SSD */}
+                                        گوشی  {item[1].title}   / {item[1].ram}
 
-                                </h6>
-                                <span>
-                                    Apple MacBook Air MGN63 2020-M1 8GB 256SSD 13.3 inch Laptop
+                                    </h6>
+                                    <span>
+                                       {item[1].title}
+                                    </span>
+                                    <br />
+                                    <ul className='text-end mt-4' >
+                                        <li>پردازنده : {item[1].cpu}</li>
+                                        <li>گرافیک : داخلی apple</li>
+                                        <li
+                                        >ظرفیت هارد : 256 گیگابایت
 
-                                </span>
-                                <br />
-                                <ul className='text-end mt-4' >
-                                    <li>پردازنده : core 4</li>
-                                    <li>گرافیک : داخلی apple</li>
-                                    <li
-                                    >ظرفیت هارد : 256 گیگابایت
-
-                                    </li>
-                                    <li>
-                                        ظرفیت ram : هشت گیگابایت
-
-
-                                    </li>
-                                    <li>
-                                        صفحه نمایش : QHD|2560x1600
+                                        </li>
+                                        <li>
+                                            ظرفیت ram : {item[1].ram}
 
 
-                                    </li>
-                                </ul>
-                            </div>
+                                        </li>
+                                        <li>
+                                            صفحه نمایش : {item[1].display}
+
+
+                                        </li>
+                                    </ul>
+                                </div>
+
                         </div>
+
                         <div className='col-lg-3'>
                             <div className='Product-price'>
                                 <div className='container'>
@@ -121,8 +145,8 @@ export default function IDNumber() {
 
                                     <hr />
                                     <div className='text-center'>
-                                        <span>31,490,000 تومان</span>
-                                        <br/> 
+                                        <span>{Number(item['1'].price).toLocaleString()} تومان</span>
+                                        <br />
                                         <button className='btn rounded-3 btn-danger mt-3'>افزودن به سبد خرید</button>
                                     </div>
                                 </div>
@@ -131,6 +155,8 @@ export default function IDNumber() {
                     </div>
                 </div>
             </div>
+            })}
+            
         </div>
     )
 }

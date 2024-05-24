@@ -19,7 +19,7 @@ export default function Home() {
         <Item_Product type="phone" bg={'#eee'}></Item_Product>
         <Ads></Ads>
         <Item_Product type="mac" ></Item_Product>
-        <Item_Product type="phone"></Item_Product>
+        <Item_Product type="watch"></Item_Product>
         <Blog></Blog>
       </article>
 

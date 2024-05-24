@@ -13,11 +13,11 @@ export default function Header() {
                     <Link className='navbar-brand' href='/'>
                         <img
                             src="/img/62dec0259f18b71442a15966_Apple-Logo.png"
-                            width={60}
+                            width={130}
                             height={60}
                             className="h-8"
                             alt="..."
-                            style={{ marginRight: '20px' }}
+                            style={{ marginRight: '-10px' }}
                         />
                         <span className='d-flex mt-1' style={{ color: '#999', textShadow: '1px 1px 2px #CCC' }}>Apple Shop</span>
                     </Link>
@@ -73,14 +73,14 @@ export default function Header() {
                                 <Link className="nav-link" href='/categories/phone' >  گوشی موبایل</Link>
                             </li>
                             <li className="nav-item">
-                                <Link href='/' className="nav-link pe-5"> ساعت هوشمند</Link>
+                                <Link href='/categories/watch' className="nav-link pe-5"> ساعت هوشمند</Link>
                             </li>
                             <li className="nav-item">
 
-                                <Link href='/' className="nav-link pe-5">   مک بوک</Link>
+                                <Link href='/categories/mac' className="nav-link pe-5">   مک بوک</Link>
                             </li>
                             <li className="nav-item">
-                                <Link href='/' className="nav-link pe-5">   ایرتگ</Link>
+                                <Link href='/categories/Airtag' className="nav-link pe-5">   ایرتگ</Link>
 
                             </li>
                             <li className="nav-item">
