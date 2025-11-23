@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import Swal from 'sweetalert2';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
@@ -12,6 +14,7 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [addingToCart, setAddingToCart] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -33,6 +36,41 @@ export default function ProductDetail() {
 
     fetchProduct();
   }, [id]);
+
+  const handleAddToCart = async () => {
+    setAddingToCart(true);
+    
+    // شبیه‌سازی افزودن به سبد خرید
+    setTimeout(() => {
+      // ذخیره در localStorage
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const existingItem = cart.find(item => item.id === product._id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: product._id,
+          title: product.title,
+          price: product.price,
+          image: product.IMG,
+          quantity: 1
+        });
+      }
+      
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      Swal.fire({
+        title: 'موفق!',
+        text: 'محصول به سبد خرید اضافه شد',
+        icon: 'success',
+        confirmButtonText: 'باشه',
+        timer: 2000
+      });
+      
+      setAddingToCart(false);
+    }, 500);
+  };
 
   if (loading) {
     return (
@@ -56,6 +94,21 @@ export default function ProductDetail() {
     <div className='Product mt-5'>
       <div className='Product-Info'>
         <div className='container'>
+          {/* Breadcrumb */}
+          <nav aria-label="breadcrumb" className="mb-4">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link href="/">خانه</Link>
+              </li>
+              <li className="breadcrumb-item">
+                <Link href="/products">محصولات</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                {product.title}
+              </li>
+            </ol>
+          </nav>
+          
           <div className='row gx-4'>
             {/* گالری تصاویر */}
             <div className='col-lg-3'>
@@ -65,21 +118,31 @@ export default function ProductDetail() {
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
                   }}
-                  loop={true}
+                  loop={product.Gallery ? true : false}
                   spaceBetween={10}
-                  navigation={true}
+                  navigation={product.Gallery ? true : false}
                   thumbs={{ swiper: thumbsSwiper }}
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper2"
                 >
                   <SwiperSlide>
-                    <img src={product.IMG || '/img/placeholder.png'} height={200} alt={product.title} />
+                    <img 
+                      src={product.IMG || '/img/placeholder.png'} 
+                      style={{ width: '100%', height: '300px', objectFit: 'contain' }}
+                      alt={product.title}
+                      loading="lazy"
+                    />
                   </SwiperSlide>
-                  {product.Gallery && (
-                    <SwiperSlide>
-                      <img src={product.Gallery} height={200} alt={product.title} />
+                  {product.Gallery && product.Gallery.split(',').map((img, idx) => (
+                    <SwiperSlide key={idx}>
+                      <img 
+                        src={img.trim()} 
+                        style={{ width: '100%', height: '300px', objectFit: 'contain' }}
+                        alt={`${product.title} - تصویر ${idx + 2}`}
+                        loading="lazy"
+                      />
                     </SwiperSlide>
-                  )}
+                  ))}
                 </Swiper>
               </div>
             </div>
@@ -111,19 +174,43 @@ export default function ProductDetail() {
               <div className='Product-price'>
                 <div className='container'>
                   <br />
-                  <i className="fa-solid fa-user fa-flip-horizontal fa-lg"></i>
-                  <span className='Seller'>ایران کالا</span>
-                  <br />
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fa-solid fa-store me-2" style={{ color: '#667eea' }}></i>
+                    <span className='Seller'>فروشگاه اپل</span>
+                  </div>
                   <hr />
-                  <i className="fa-solid fa-certificate"></i>
-                  <span>گارانتی ۱۸ ماهه پیکسل</span>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fa-solid fa-certificate me-2" style={{ color: '#00d25b' }}></i>
+                    <span>گارانتی ۱۸ ماهه معتبر</span>
+                  </div>
                   <hr />
-                  ارسال: موجود در انبار (ارسال فوری)
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="fa-solid fa-truck-fast me-2" style={{ color: '#ff8800' }}></i>
+                    <span>ارسال سریع (۱-۲ روز کاری)</span>
+                  </div>
                   <hr />
                   <div className='text-center'>
-                    <span>{Number(product.price).toLocaleString()} تومان</span>
+                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#e72323' }}>
+                      {Number(product.price).toLocaleString()} تومان
+                    </span>
                     <br />
-                    <button className='btn rounded-3 btn-danger mt-3'>افزودن به سبد خرید</button>
+                    <button 
+                      className='btn rounded-3 btn-danger mt-3 w-100' 
+                      onClick={handleAddToCart}
+                      disabled={addingToCart}
+                    >
+                      {addingToCart ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2"></span>
+                          در حال افزودن...
+                        </>
+                      ) : (
+                        <>
+                          <i className="fa-solid fa-cart-plus me-2"></i>
+                          افزودن به سبد خرید
+                        </>
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>

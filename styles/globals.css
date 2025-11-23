@@ -659,3 +659,232 @@ in Styles */
   color: var(--primary-Text);
   font-weight: 500;
 }
+
+/* Site Improvements */
+
+/* Search bar responsive */
+@media (max-width: 991px) {
+  header nav .mr-5 {
+    display: none !important;
+  }
+}
+
+/* Navigation link special color */
+.nav-link-special {
+  color: #e72323 !important;
+}
+
+.nav-link-special:hover {
+  color: #c41e1e !important;
+}
+
+/* Improved focus states for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #0099ff;
+  outline-offset: 2px;
+}
+
+/* Better image loading */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img[loading="lazy"] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Card hover improvements */
+.Category-Type .swiper-slide .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Category-Type .swiper-slide .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Empty state styles */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.empty-state i {
+  font-size: 60px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+  padding: 0 8px;
+  color: #999;
+}
+
+.breadcrumb-item a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #666;
+}
+
+/* Product detail improvements */
+.Product-price {
+  position: sticky;
+  top: 20px;
+}
+
+.Product-price hr {
+  margin: 15px 0;
+  border-color: #e0e0e0;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: white !important;
+  margin-bottom: 20px;
+}
+
+.cta-section .btn {
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 25px;
+  transition: transform 0.2s ease;
+}
+
+.cta-section .btn:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .Product-Slider {
+    margin-top: 0;
+  }
+  
+  .Product-price {
+    position: static;
+    margin-top: 20px;
+  }
+  
+  .cta-section {
+    padding: 40px 20px;
+  }
+  
+  .cta-section h2 {
+    font-size: 24px;
+  }
+}
+
+/* Better contrast for text */
+.card-title {
+  color: #333 !important;
+  font-weight: 600;
+}
+
+.card-body span {
+  color: #e72323 !important;
+  font-weight: bold;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* Badge positioning */
+.position-relative .badge {
+  z-index: 10;
+}
+
+/* Better button states */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Improved form validation */
+.form-control:invalid:not(:placeholder-shown) {
+  border-color: #e72323;
+}
+
+.form-control:valid:not(:placeholder-shown) {
+  border-color: #00d25b;
+}
+
+/* Accessibility - Skip to content */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Print styles */
+@media print {
+  header, footer, .btn, .swiper-button-next, .swiper-button-prev {
+    display: none !important;
+  }
+}

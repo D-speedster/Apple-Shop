@@ -5,6 +5,9 @@ import Swal from 'sweetalert2';
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const itemsPerPage = 10;
 
   useEffect(() => {
     loadProducts();
@@ -58,6 +61,18 @@ export default function AdminProducts() {
     }
   };
 
+  // فیلتر محصولات بر اساس جستجو
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // محاسبه pagination
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = filteredProducts.slice(startIndex, endIndex);
+
   if (loading) {
     return (
       <div className="text-center mt-5">
@@ -71,11 +86,26 @@ export default function AdminProducts() {
   return (
     <div className="mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>مدیریت محصولات</h2>
+        <h2>مدیریت محصولات ({filteredProducts.length})</h2>
         <Link href="/admin/products/new" className="btn btn-primary">
           <i className="fa-solid fa-plus me-2"></i>
           افزودن محصول جدید
         </Link>
+      </div>
+
+      {/* جستجو */}
+      <div className="mb-3">
+        <input
+          type="search"
+          className="form-control"
+          placeholder="جستجو در محصولات..."
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setCurrentPage(1);
+          }}
+          style={{ maxWidth: '400px' }}
+        />
       </div>
 
       <div className="table-responsive">
@@ -91,12 +121,14 @@ export default function AdminProducts() {
             </tr>
           </thead>
           <tbody>
-            {products.length === 0 ? (
+            {currentProducts.length === 0 ? (
               <tr>
-                <td colSpan="6" className="text-center">محصولی یافت نشد</td>
+                <td colSpan="6" className="text-center">
+                  {searchTerm ? 'نتیجه‌ای یافت نشد' : 'محصولی یافت نشد'}
+                </td>
               </tr>
             ) : (
-              products.map(product => (
+              currentProducts.map(product => (
                 <tr key={product._id}>
                   <td>
                     <img 
@@ -133,6 +165,44 @@ export default function AdminProducts() {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <nav className="mt-4">
+          <ul className="pagination justify-content-center">
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <button 
+                className="page-link" 
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                قبلی
+              </button>
+            </li>
+            
+            {[...Array(totalPages)].map((_, index) => (
+              <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                <button 
+                  className="page-link" 
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+            
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <button 
+                className="page-link" 
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                بعدی
+              </button>
+            </li>
+          </ul>
+        </nav>
+      )}
     </div>
   );
 }
